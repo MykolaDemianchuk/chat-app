@@ -36,7 +36,7 @@ public class ServerTest {
         Socket client = clientAcceptService.accept(serverSocket);
         assertNotNull(client);
         assertEquals(port, client.getLocalPort());
-        readerService = new ReaderServiceImpl(client);
+        //readerService = new ReaderServiceImpl(client);
         String response = readerService.read();
         assertNotNull(response);
         System.out.println(response);

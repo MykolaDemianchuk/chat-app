@@ -13,14 +13,15 @@ public class Server {
     public static void main(String[] args) {
         ServerSocket ss = new ServerStartServiceImpl().startServer(5000);
         Socket s = new ClientAcceptServiceImpl().accept(ss);
-        String msg = new ReaderServiceImpl(s).read();
-        System.out.println(msg);
+        String msg = null;
         try {
+            msg = new ReaderServiceImpl(s.getInputStream()).read();
             ss.close();
             s.close();
         } catch (IOException e) {
             LOGGER.warn(e.getMessage(), e);
         }
+        System.out.println(msg);
     }
 }
 
