@@ -14,9 +14,8 @@ public class Client {
 
     public static void main(String[] args) {
         Socket s = new ConnectorServiceImpl().connect("127.0.0.1", 5000);
-        new WriterServiceImpl(s).write("HELLO SERVER");
-
-        try {
+        try{
+            new WriterServiceImpl(s.getOutputStream()).write("HELLO SERVER");
             s.close();
         } catch (IOException e) {
             LOGGER.warn(e.getMessage(), e);

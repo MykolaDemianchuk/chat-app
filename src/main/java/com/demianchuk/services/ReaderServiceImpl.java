@@ -4,19 +4,15 @@ import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.Socket;
 
 public class ReaderServiceImpl implements ReaderService {
     private static final Logger LOGGER = Logger.getLogger(ReaderServiceImpl.class);
     private BufferedReader bufferedReader;
 
-    public ReaderServiceImpl(Socket socket) {
-        try {
-            bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        } catch (IOException e) {
-            LOGGER.warn(e.getMessage(), e);
-        }
+    public ReaderServiceImpl(InputStream inputStream) {
+            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
     }
 
     @Override

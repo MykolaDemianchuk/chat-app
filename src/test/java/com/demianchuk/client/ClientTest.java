@@ -33,7 +33,7 @@ public class ClientTest {
     @Test
     public void write() {
         Socket s = connectorService.connect(host, port);
-        writerService = new WriterServiceImpl(s);
+      //  writerService = new WriterServiceImpl(s);
         assertTrue(writerService.write("Hello from Client"));
     }
 
